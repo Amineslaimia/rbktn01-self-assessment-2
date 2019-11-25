@@ -33,5 +33,29 @@ var Tree = function(value) {
   this.children = [];
 };
 
+function each(coll,f){
+  if ( Array.isArray(coll)){
+    for (var i =0; i <coll.length;i++){
+      f(coll[i])
+    }
+  }else{
+    for(var key in coll){
+      f(coll[key])
+    }
+  }
+}
+Tree.prototype.addChild=function(value){
+  this.children.push(new Tree (value))
+}
+Tree.prototype.map= function(callback){
+  newtree=new Tree
+  elem=this.children
+   each (Tree,function(elem){
+       console.log(elem)
+     newtree.value=callback(elem)
+   })
+   return newtree
+}
+
 
 
